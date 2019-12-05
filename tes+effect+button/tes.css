@@ -1,0 +1,455 @@
+html, body {
+     width: 100%;
+     height: 100%;
+     text-align: center;
+   }
+
+#sentence {
+     display: flex;
+}
+
+
+.wrong { color: rgb(255, 0, 0); }
+
+p {
+     font-size: 20pt;
+}
+
+/* Pop */
+@-webkit-keyframes hvr-pop {
+     50% {
+       -webkit-transform: scale(1.9);
+       transform: scale(1.9);
+     }
+   }
+   
+   @keyframes hvr-pop {
+     50% {
+       -webkit-transform: scale(1.9);
+       transform: scale(1.9);
+     }
+   }
+   
+   .hvr-pop{
+     -webkit-animation-name: hvr-pop;
+     animation-name: hvr-pop;
+     -webkit-animation-duration: 0.3s;
+     animation-duration: 0.3s;
+     -webkit-animation-timing-function: linear;
+     animation-timing-function: linear;
+     -webkit-animation-iteration-count: 1;
+     animation-iteration-count: 1;
+   }
+/* Wobble Vertical */
+@-webkit-keyframes hvr-wobble-vertical {
+     16.65% {
+          -webkit-transform: translateY(8px);
+          transform: translateY(8px);
+     }
+
+     33.3% {
+          -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
+     }
+
+     49.95% {
+          -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+     }
+
+     66.6% {
+          -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+     }
+
+     83.25% {
+          -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+     }
+
+     100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+     }
+}
+
+@keyframes hvr-wobble-vertical {
+     16.65% {
+          -webkit-transform: translateY(8px);
+          transform: translateY(8px);
+     }
+
+     33.3% {
+          -webkit-transform: translateY(-6px);
+          transform: translateY(-6px);
+     }
+
+     49.95% {
+          -webkit-transform: translateY(4px);
+          transform: translateY(4px);
+     }
+
+     66.6% {
+          -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+     }
+
+     83.25% {
+          -webkit-transform: translateY(1px);
+          transform: translateY(1px);
+     }
+
+     100% {
+          -webkit-transform: translateY(0);
+          transform: translateY(0);
+     }
+}
+
+/* .hvr-wobble-vertical {
+     display: inline-block;
+     vertical-align: middle;
+     -webkit-transform: perspective(1px) translateZ(0);
+     transform: perspective(1px) translateZ(0);
+     box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+} */
+
+/*ini kuhapus hover, focusnya*/
+.hvr-wobble-vertical {
+     -webkit-animation-name: hvr-wobble-vertical;
+     animation-name: hvr-wobble-vertical;
+     -webkit-animation-duration: 0.5s;
+     animation-duration: 0.5s;
+     -webkit-animation-timing-function: ease-in-out;
+     animation-timing-function: ease-in-out;
+     -webkit-animation-iteration-count: 1;
+     animation-iteration-count: 1;
+}
+
+.mainpage{
+     height: 100%;
+     width: 100%;
+     background-image: url("mainpage.jpg");
+     background-repeat:no-repeat;
+     background-size:cover;
+}
+.playpage{
+     display: none;
+     height: 100%;
+     width: 100%;
+     /* background-color: azure; */
+     position: absolute;
+     z-index: 1;
+
+}
+.howtoplaypage{
+     display: none;
+     height: 100%;
+     width: 100%;
+     background-color: yellowgreen;
+}
+
+/* tombol play */
+   .play {
+     display: block;
+     position : relative;
+     top : 250px;
+     left : 535px;
+     height: 80px;
+     width: 200px;
+     -webkit-animation: hue-rotate 10s linear infinite;
+             animation: hue-rotate 10s linear infinite;
+   }
+/* tombol howtoplay */
+   .howtoplay {
+     display: block;
+     position : relative;
+     top : 265px;
+     left : 540px;
+     height: 80px;
+     width: 200px;
+     -webkit-animation: hue-rotate 10s linear infinite;
+             animation: hue-rotate 10s linear infinite;
+   }
+/* tombol backplay */
+   .backplay {
+     display: block;
+     position : relative;
+     top : 265px;
+     left : 540px;
+     height: 80px;
+     width: 200px;
+     -webkit-animation: hue-rotate 10s linear infinite;
+             animation: hue-rotate 10s linear infinite;
+   }
+/* tombol backhowtoplay */
+   .backhowtoplay {
+     display: block;
+     position : relative;
+     top : 265px;
+     left : 540px;
+     height: 80px;
+     width: 200px;
+     -webkit-animation: hue-rotate 10s linear infinite;
+             animation: hue-rotate 10s linear infinite;
+   }
+/* tombol universal */
+   .button {
+     -webkit-font-smoothing: antialiased;
+     background-color: #222;
+     border: none;
+     color: #fff;
+     display: inline-block;
+     font-family: 'Montserrat', sans-serif;
+     font-size: 14px;
+     font-weight: 100;
+     text-decoration: none;
+     -webkit-user-select: none;
+        -moz-user-select: none;
+         -ms-user-select: none;
+             user-select: none;
+     letter-spacing: 1px;
+     color: white;
+     padding: 20px 40px;
+     text-transform: uppercase;
+     transition: all 0.1s ease-out;
+   }
+   .button:hover {
+     background-color: #90feb5;
+     color: #fff;
+   }
+   .button:active {
+     -webkit-transform: scale(0.95);
+             transform: scale(0.95);
+   }
+   .button--bubble {
+     position: relative;
+     
+     z-index: 2;
+     color: white;
+     background: none;
+   }
+   .button--bubble:hover {
+     background: none;
+   }
+   .button--bubble:hover + .button--bubble__effect-container .circle {
+     background: #44fd82;
+   }
+   .button--bubble:hover + .button--bubble__effect-container .button {
+     background: #44fd82;
+   }
+   .button--bubble:active + .button--bubble__effect-container {
+     -webkit-transform: scale(0.95);
+             transform: scale(0.95);
+   }
+   
+   .button--bubble__container {
+     position: relative;
+     display: inline-block;
+   }
+   
+   .button--bubble__container .effect-button {
+     position: absolute;
+     width: 30%;
+     height: 15%;
+     top: 50%;
+     left: 25%;
+     z-index: 1;
+     -webkit-transform: translateY(-50%);
+             transform: translateY(-50%);
+     background: #222;
+     transition: background 0.1s ease-out;
+   }
+/* back play */
+   .button--bubble__container .effect-button2 {
+     position: absolute;
+     width: 20%;
+     height: 15%;
+     top: 50%;
+     left: 25%;
+     z-index: 1;
+     -webkit-transform: translateY(-50%);
+             transform: translateY(-50%);
+     background: #222;
+     transition: background 0.1s ease-out;
+   }
+   
+   .button--bubble__effect-container {
+     position: absolute;
+     display: block;
+     width: 200%;
+     height: 400%;
+     top: -150%;
+     left: -50%;
+     -webkit-filter: url("#goo");
+     filter: url("#goo");
+     transition: all 0.1s ease-out;
+     pointer-events: none;
+   }
+   .button--bubble__effect-container .circle {
+     position: absolute;
+     width: 25px;
+     height: 25px;
+     border-radius: 15px;
+     background: #222;
+     transition: background 0.1s ease-out;
+   }
+   .button--bubble__effect-container .circle.top-left {
+     top: 40%;
+     left: 27%;
+   }
+   .button--bubble__effect-container .circle.bottom-right {
+     bottom: 40%; /*ukuran vertikalnya*/
+     right: 27%;
+   }
+   
+   .goo {
+     position: absolute;
+     visibility: hidden;
+     width: 1px;
+     height: 1px;
+   }
+   
+   .button--bubble__container {
+     top: 50%;
+     margin-top: -25px;
+   }
+   
+   @-webkit-keyframes hue-rotate {
+     from {
+       -webkit-filter: hue-rotate(0);
+       -moz-filter: hue-rotate(0);
+       -ms-filter: hue-rotate(0);
+       filter: hue-rotate(0);
+     }
+     to {
+       -webkit-filter: hue-rotate(360deg);
+       -moz-filter: hue-rotate(360deg);
+       -ms-filter: hue-rotate(360deg);
+       filter: hue-rotate(360deg);
+     }
+   }
+   
+   @keyframes hue-rotate {
+     from {
+       -webkit-filter: hue-rotate(0);
+       -moz-filter: hue-rotate(0);
+       -ms-filter: hue-rotate(0);
+       filter: hue-rotate(0);
+     }
+     to {
+       -webkit-filter: hue-rotate(360deg);
+       -moz-filter: hue-rotate(360deg);
+       -ms-filter: hue-rotate(360deg);
+       filter: hue-rotate(360deg);
+     }
+   }
+
+  
+@import url('https://fonts.googleapis.com/css?family=Voltaire');
+
+body { margin: 0; }
+canvas { width: 100%; height: 100% }
+
+#world{
+  position: absolute;
+  width:100%;
+  height: 100%;
+  background-color: #dbe6e6;
+  overflow: hidden;
+  display: none;
+}
+
+
+#gameoverInstructions{
+  position:absolute;
+  font-family:'Voltaire', sans-serif;
+  font-weight:bold;
+  text-transform: uppercase;
+  font-size:120px;
+  text-align:center;
+  color:#ffc5a2;
+  opacity:0;
+  left:50%;
+  top:50%;
+  width:100%;
+  transform : translate(-50%,-100%);
+  user-select: none;
+  transition: all 500ms ease-in-out;
+}
+
+#gameoverInstructions.show{
+  opacity:1;
+  transform : translate(-50%,-50%);
+  transition: all 500ms ease-in-out;
+}
+
+
+#dist{
+  position:absolute;
+  left:50%;
+  top:50px;
+  transform:translate(-50%,0%);
+  user-select: none;  
+}
+
+.label{
+  position:relative;
+  font-family:'Voltaire', sans-serif;
+  text-transform:uppercase;
+  color:#ffa873;
+  font-size:12px;
+  letter-spacing:2px;
+  text-align:center;
+  margin-bottom:5px;
+}
+
+
+#distValue{
+  position:relative;
+  text-transform:uppercase;
+  color:#dc5f45;
+  font-size:40px;
+  font-family:'Voltaire';
+  text-align:center;
+}
+
+#credits{
+  position:absolute;
+  width:100%;
+  margin: auto;
+  bottom:0;
+  margin-bottom:20px;
+  font-family:'Voltaire', sans-serif;
+  color:#544027;
+  font-size:12px;
+  letter-spacing:0.5px;
+  text-transform: uppercase;
+  text-align : center;
+  user-select: none;  
+}
+#credits a {
+  color:#544027;
+}
+
+#credits a:hover {
+  color:#dc5f45;
+}
+
+#instructions{
+  position:absolute;
+  width:100%;
+  bottom:0;
+  margin: auto;
+  margin-bottom:50px;
+  font-family:'Voltaire', sans-serif;
+  color:#dc5f45;
+  font-size:16px;
+  letter-spacing:1px;
+  text-transform: uppercase;
+  text-align : center;
+  user-select: none;
+}
+.lightInstructions {
+  color:#5f9042;
+}
+   
