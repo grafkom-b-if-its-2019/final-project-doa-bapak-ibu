@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <title>Waiting Room</title>
+     <style>
+          p {
+               color: #949494;
+               font-family: sans-serif;
+          }
+
+          html,
+          body {
+               height: 100%;
+               width: 100%;
+               display: flex;
+          }
+
+          #waiting {
+               height: fit-content;
+               text-align: center;
+               margin: auto;
+          }
+
+          .lds-ellipsis {
+               display: inline-block;
+               position: relative;
+               width: 80px;
+               height: 80px;
+          }
+
+          .lds-ellipsis div {
+               position: absolute;
+               top: 33px;
+               width: 13px;
+               height: 13px;
+               border-radius: 50%;
+               background: #949494;
+               animation-timing-function: cubic-bezier(0, 1, 1, 0);
+          }
+
+          .lds-ellipsis div:nth-child(1) {
+               left: 8px;
+               animation: lds-ellipsis1 0.6s infinite;
+          }
+
+          .lds-ellipsis div:nth-child(2) {
+               left: 8px;
+               animation: lds-ellipsis2 0.6s infinite;
+          }
+
+          .lds-ellipsis div:nth-child(3) {
+               left: 32px;
+               animation: lds-ellipsis2 0.6s infinite;
+          }
+
+          .lds-ellipsis div:nth-child(4) {
+               left: 56px;
+               animation: lds-ellipsis3 0.6s infinite;
+          }
+
+          @keyframes lds-ellipsis1 {
+               0% {
+                    transform: scale(0);
+               }
+
+               100% {
+                    transform: scale(1);
+               }
+          }
+
+          @keyframes lds-ellipsis3 {
+               0% {
+                    transform: scale(1);
+               }
+
+               100% {
+                    transform: scale(0);
+               }
+          }
+
+          @keyframes lds-ellipsis2 {
+               0% {
+                    transform: translate(0, 0);
+               }
+
+               100% {
+                    transform: translate(24px, 0);
+               }
+          }
+
+          .checked {
+               background-image: url('/img/ok-1s-128px.svg');
+          }
+     </style>
+</head>
+
+<body>
+     <div id="waiting">
+          <div class="lds-ellipsis">
+               <div></div>
+               <div></div>
+               <div></div>
+               <div></div>
+          </div>
+          <div class="checked"></div>
+          <p>Waiting for other players</p>
+     </div>
+
+     <script src="/socket.io/socket.io.js"></script>
+     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+     <script>
+          var socket;
+          var roomID;
+
+          $(function () {
+               const self = this;
+               socket = io();
+
+               socket.emit('waiting');
+
+               readFile('/txt/story.txt');
+
+               socket.on('enemy found', (room) => {
+                    roomID = room;
+
+                    if(story.length > 0){
+                         $("#waiting").load('/game', {room});
+                    }
+                    // setInterval(function() {
+                         
+                    // }, 3000)
+               });
+          });
+
+          var story = []; 
+
+          function readFile(file) {
+               let xhr = new XMLHttpRequest();
+               xhr.open('GET', file);
+
+               // request state change event
+               xhr.onreadystatechange = function () {
+
+                    // request completed?
+                    if (xhr.readyState !== 4) return;
+
+                    if (xhr.status === 200) {
+                         // request successful - show response
+                         story = xhr.responseText.split('\n');
+                    } else {
+                         // request error
+                         console.log('HTTP error', xhr.status, xhr.statusText);
+                    }
+               };
+
+               xhr.send();
+          }
+     </script>
+     
+</body>
+
+</html>

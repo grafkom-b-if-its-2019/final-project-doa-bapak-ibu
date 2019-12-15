@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <meta charset="utf-8">
+     <title>Type Game</title>
+     <!-- game style css -->
+     <link rel="stylesheet" href="game/css/index.css">
+</head>
+
+<body>
+     <!-- <link rel="stylesheet" href="game/css/index.css"> -->
+     <div id="world">
+          <div id="gameoverInstructions">
+               Game Over
+          </div>
+     </div>
+     <div id="dist">
+          <div class="label">distance</div>
+          <div id="distValue">000</div>
+     </div>
+
+     <div id="instructions">Click to jump<span class="lightInstructions"> — Grab the carrots / avoid the
+               hedgehogs</span></div>
+
+     <script type="text/javascript">
+          var globalFlag = 0;
+     </script> 
+
+     <script>
+          // if(io !== undefined){};
+          // if(story !== undefined){
+          //      console.log(story);
+          // }
+          // console.log(socket.id);
+     
+          socket.emit('announce', roomID, socket.id);
+     
+          socket.on("announce-client", function (msg) { 
+               console.log(msg);
+          });
+     </script>
+     <script id="rendered-js" src="game/main.js"></script>
+</body>
+
+</html>
