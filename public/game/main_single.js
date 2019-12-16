@@ -82,6 +82,16 @@ var greenMat = new THREE.MeshPhongMaterial({
     shading:THREE.FlatShading
   });
 
+  var blueMat = new THREE.MeshPhongMaterial({
+    color: 0x000080,
+    shading: THREE.FlatShading
+  })
+
+  var magentaMat = new THREE.MeshPhongMaterial({
+    color: 0x8B008B,
+    shading: THREE.FlatShading
+  })
+
 
 // OTHER VARIABLES
 
@@ -189,7 +199,7 @@ function createLights() {
 function createFloor() {
   
   floorShadow = new THREE.Mesh(new THREE.SphereGeometry(floorRadius, 50, 50), new THREE.MeshPhongMaterial({
-    color: 0x7abf8e,
+    color: 0x8B4513,
     specular:0x000000,
     shininess:1,
     transparent:true,
@@ -222,7 +232,7 @@ Hero = function() {
   
   var torsoGeom = new THREE.CubeGeometry(7, 7, 10, 1);
   
-  this.torso = new THREE.Mesh(torsoGeom, brownMat);
+  this.torso = new THREE.Mesh(torsoGeom, greenMat);
   this.torso.position.z = 0;
   this.torso.position.y = 7;
   this.torso.castShadow = true;
@@ -237,7 +247,7 @@ Hero = function() {
   
   var tailGeom = new THREE.CubeGeometry(3, 3, 3, 1);
   tailGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0,-2));
-  this.tail = new THREE.Mesh(tailGeom, lightBrownMat);
+  this.tail = new THREE.Mesh(tailGeom, greenMat);
   this.tail.position.z = -4;
   this.tail.position.y = 5;
   this.tail.castShadow = true;
@@ -248,14 +258,14 @@ Hero = function() {
   var headGeom = new THREE.CubeGeometry(10, 10, 13, 1);
   
   headGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0,7.5));
-  this.head = new THREE.Mesh(headGeom, brownMat);
+  this.head = new THREE.Mesh(headGeom, greenMat);
   this.head.position.z = 2;
   this.head.position.y = 11;
   this.head.castShadow = true;
   this.body.add(this.head);
   
   var cheekGeom = new THREE.CubeGeometry(1, 4, 4, 1);
-  this.cheekR = new THREE.Mesh(cheekGeom, pinkMat);
+  this.cheekR = new THREE.Mesh(cheekGeom, whiteMat);
   this.cheekR.position.x = -5;
   this.cheekR.position.z = 7;
   this.cheekR.position.y = -2.5;
@@ -268,7 +278,7 @@ Hero = function() {
   
   
   var noseGeom = new THREE.CubeGeometry(6, 6, 3, 1);
-  this.nose = new THREE.Mesh(noseGeom, lightBrownMat);
+  this.nose = new THREE.Mesh(noseGeom, greenMat);
   this.nose.position.z = 13.5;
   this.nose.position.y = 2.6;
   this.nose.castShadow = true;
@@ -277,7 +287,7 @@ Hero = function() {
   var mouthGeom = new THREE.CubeGeometry(4, 2, 4, 1);
   mouthGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0,3));
   mouthGeom.applyMatrix(new THREE.Matrix4().makeRotationX(Math.PI/12));
-  this.mouth = new THREE.Mesh(mouthGeom, brownMat);
+  this.mouth = new THREE.Mesh(mouthGeom, greenMat);
   this.mouth.position.z = 8;
   this.mouth.position.y = -4;
   this.mouth.castShadow = true;
@@ -285,7 +295,7 @@ Hero = function() {
   
   
   var pawFGeom = new THREE.CubeGeometry(3,3,3, 1);
-  this.pawFR = new THREE.Mesh(pawFGeom, lightBrownMat);
+  this.pawFR = new THREE.Mesh(pawFGeom, greenMat);
   this.pawFR.position.x = -2;
   this.pawFR.position.z = 6;
   this.pawFR.position.y = 1.5;
@@ -298,7 +308,7 @@ Hero = function() {
   this.body.add(this.pawFL);
   
   var pawBGeom = new THREE.CubeGeometry(3,3,6, 1);
-  this.pawBL = new THREE.Mesh(pawBGeom, lightBrownMat);
+  this.pawBL = new THREE.Mesh(pawBGeom, greenMat);
   this.pawBL.position.y = 1.5;
   this.pawBL.position.z = 0;
   this.pawBL.position.x = 5;
@@ -324,7 +334,7 @@ Hero = function() {
   earGeom.vertices[3].z+=.5;
   earGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,9,0));
   
-  this.earL = new THREE.Mesh(earGeom, brownMat);
+  this.earL = new THREE.Mesh(earGeom, whiteMat);
   this.earL.position.x = 2;
   this.earL.position.z = 2.5;
   this.earL.position.y = 5;
@@ -513,17 +523,17 @@ Monster = function(){
   this.body = new THREE.Group();
   
   var torsoGeom = new THREE.CubeGeometry(15,15,20, 1);
-  this.torso = new THREE.Mesh(torsoGeom, blackMat);
+  this.torso = new THREE.Mesh(torsoGeom, magentaMat);
   
   var headGeom = new THREE.CubeGeometry(20,20,40, 1);
   headGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,0,20));
-  this.head = new THREE.Mesh(headGeom, blackMat);
+  this.head = new THREE.Mesh(headGeom, magentaMat);
   this.head.position.z = 12;
   this.head.position.y = 2;
   
   var mouthGeom = new THREE.CubeGeometry(10,4,20, 1);
   mouthGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,-2,10));
-  this.mouth = new THREE.Mesh(mouthGeom, blackMat);
+  this.mouth = new THREE.Mesh(mouthGeom, magentaMat);
   this.mouth.position.y = -8;
   this.mouth.rotation.x = .4;
   this.mouth.position.z = 4;
@@ -568,7 +578,7 @@ Monster = function(){
   this.mouth.add(this.tongue);
   
   var noseGeom = new THREE.CubeGeometry(4,4,4, 1);
-  this.nose = new THREE.Mesh(noseGeom, pinkMat);
+  this.nose = new THREE.Mesh(noseGeom, blueMat);
   this.nose.position.z = 39.5;
   this.nose.position.y = 9;
   this.head.add(this.nose);
@@ -584,7 +594,7 @@ Monster = function(){
   this.eyeL.castShadow = true;
   this.head.add(this.eyeL);
   
-  var irisGeom = new THREE.CubeGeometry(.6,1,1);
+  var irisGeom = new THREE.CubeGeometry(.2,1,1);
   
   this.iris = new THREE.Mesh(irisGeom, blackMat);
   this.iris.position.x = 1.2;
@@ -609,7 +619,7 @@ Monster = function(){
  
   earGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,3,0));
   
-  this.earL = new THREE.Mesh(earGeom, blackMat);
+  this.earL = new THREE.Mesh(earGeom, blueMat);
   this.earL.position.x = 6;
   this.earL.position.z = 1;
   this.earL.position.y = 10;
@@ -628,7 +638,7 @@ Monster = function(){
   tailGeom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI/2));
   tailGeom.applyMatrix(new THREE.Matrix4().makeRotationZ(Math.PI/4));
   
-  this.tail = new THREE.Mesh(tailGeom, blackMat);
+  this.tail = new THREE.Mesh(tailGeom, blueMat);
   this.tail.position.z = -10;
   this.tail.position.y = 4;
   this.torso.add(this.tail);
@@ -636,7 +646,7 @@ Monster = function(){
   
   var pawGeom = new THREE.CylinderGeometry(1.5,0,10);
   pawGeom.applyMatrix(new THREE.Matrix4().makeTranslation(0,-5,0));
-  this.pawFL = new THREE.Mesh(pawGeom, blackMat);
+  this.pawFL = new THREE.Mesh(pawGeom, blueMat);
   this.pawFL.position.y = -7.5;
   this.pawFL.position.z = 8.5;
   this.pawFL.position.x = 5.5;
@@ -1295,8 +1305,8 @@ function resetGame(){
   speed = initSpeed;
   level = 0;
   distance = 0;
-  carrot.mesh.visible = true;
-  obstacle.mesh.visible = true;
+  carrot.mesh.visible = false;
+  obstacle.mesh.visible = false;
   gameStatus = "play";
   hero.status = "running";
   hero.nod();
