@@ -22,7 +22,7 @@ var monsterPosTarget = .65;
 var floorRotation = 0;
 var collisionObstacle = 10;
 var collisionBonus = 20;
-var gameStatus = "gameover";
+var gameStatus = "play";
 var cameraPosGame = 160;
 var cameraPosGameOver = 260;
 var monsterAcceleration = 0.004;
@@ -1275,7 +1275,7 @@ function init(){
   createBonusParticles();
   createObstacle();
   initUI();
-  // resetGame();
+  resetGame();
   loop();
   
   //setInterval(hero.blink.bind(hero), 3000);
@@ -1403,6 +1403,13 @@ enemy = {
   right: 0,
   wrong: 0,
   speed
+}
+
+if(player.text_len == 0){
+  var sentence = story[player.text];
+  generateText(sentence);
+  player.text_len = sentence.length;
+  console.log(sentence);
 }
 
 init()

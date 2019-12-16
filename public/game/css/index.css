@@ -37,9 +37,17 @@ canvas { width: 100%; height: 100% }
 }
 
 
-#dist{
+#dist-player1{
   position:absolute;
-  left:50%;
+  left:10%;
+  top:50px;
+  transform:translate(-50%,0%);
+  user-select: none;  
+}
+
+#dist-player2{
+  position:absolute;
+  right:10%;
   top:50px;
   transform:translate(-50%,0%);
   user-select: none;  
@@ -57,10 +65,19 @@ canvas { width: 100%; height: 100% }
 }
 
 
-#distValue{
+#distValue-2{
   position:relative;
   text-transform:uppercase;
   color:#dc5f45;
+  font-size:40px;
+  font-family:'Voltaire';
+  text-align:center;
+}
+
+#distValue{
+  position:relative;
+  text-transform:uppercase;
+  color:#01cc36;
   font-size:40px;
   font-family:'Voltaire';
   text-align:center;
@@ -104,4 +121,27 @@ canvas { width: 100%; height: 100% }
 }
 .lightInstructions {
   color:#5f9042;
+}
+
+#sentence{
+  width: fit-content;
+  margin: auto;
+  user-select: none;
+  display: flex;
+}
+#sentence>p{
+  font-family: 'Voltaire', sans-serif;
+  color: #ff9900;
+  font-size: 20px;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#sentence-frame{
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  margin-bottom: 130px;
 }

@@ -16,6 +16,14 @@ app.post('/',(req, res)=>{
      res.sendFile(__dirname + '/pages/multi.html');
 });
 
+app.post('/single',(req, res)=>{
+     res.sendFile(__dirname + '/pages/single.html');
+});
+
+app.post('/game_single',(req, res)=>{
+     res.sendFile(__dirname + '/pages/game_single.html');
+});
+
 app.post('/game',(req, res)=>{
      res.sendFile(__dirname + '/pages/game.html');
 });

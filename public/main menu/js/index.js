@@ -103,6 +103,10 @@ $(document).ready(function(){
           audiobutton.play();
           $('#multi').submit();
      });
+     $("#link_single").click(function(){
+          audiobutton.play();
+          $('#single').submit();
+     });
      $(".howtoplay").click(function(){
           audiobutton.play();
      });
