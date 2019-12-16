@@ -11,11 +11,14 @@
 
 function generateText(sentence){
      var txt = $('#sentence');
+     txt.empty();
 
      //generate text
      var str = sentence;
      for (let i = 0; i < str.length; i++) {
           var letter = str[i] != " " ? str[i] : '&nbsp';
+          console.log(letter);
+          
           txt.append('<p class="flag">' + letter + '</p>');
      }
 }
@@ -30,15 +33,28 @@ function check(param) {
      if(param == 190) {
           input = '.';
      }
+     if(param == 49) {
+          input = '!';
+     }
+     if(param == 191) {
+          input = '?';
+     }
+     if(param == 222) {
+          input = "'"
+     }
+
      var letter = $('.flag').first();
      var up = letter.html();
      if (up != ',') {
           up = up.toUpperCase();
      }
+     if (up == '"') {
+          up = "'";
+     }
      console.log(up + 'input' + input);
      
-     var audio = new sound("click.mp3");
-     var audio2 = new sound("wrong.mp3");
+     var audio = new sound("sound/click.mp3");
+     var audio2 = new sound("sound/wrong.mp3");
      
 
      
@@ -48,6 +64,13 @@ function check(param) {
           letter.removeClass('flag');
           letter.addClass("hvr-pop");
           audio.play();
+          hero.jump();
+          player.text_len -= 1;
+          getBonus();
+          player.right += 1;
+          console.log(player.text_len);
+          console.log(up);
+          
 
 
      } else {
@@ -55,6 +78,7 @@ function check(param) {
           letter.addClass("wrong");
           letter.addClass("hvr-wobble-vertical");
           audio2.play();
+          player.wrong += 1;
           letter.delay(700).queue(function () { // Wait for 0,7 second.
                letter.removeClass("hvr-wobble-vertical").dequeue();
                letter.removeClass("wrong").dequeue();
@@ -83,8 +107,9 @@ document.addEventListener("keydown", function (event) {
      if(player.text_len == 0){
           var sentence = story[player.text];
           generateText(sentence);
-          player.text_len = sentence.length;
+          player.text_len = sentence.length-1;
           console.log(player.text_len);
+          player.text += 1;
      }
      check(event.keyCode);
 });

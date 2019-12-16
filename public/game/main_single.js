@@ -30,7 +30,7 @@ var malusClearColor = 0xb44b39;
 var malusClearAlpha = 0;
 var audio = new Audio('https://s3-us-west-2.amazonaws.com/s.cdpn.io/264161/Antonio-Vivaldi-Summer_01.mp3');
 
-var fieldGameOver, fieldDistance;
+var fieldGameOver, fieldDistance, fieldRight, fieldWrong;
 
 //SCREEN & MOUSE VARIABLES
 
@@ -1228,7 +1228,9 @@ function getMalus(){
 function updateDistance(){
   distance += delta*speed;
   var d = distance/2;
-  fieldDistance.innerHTML = Math.floor(d);
+  // fieldDistance.innerHTML = Math.floor(d);
+  fieldRight.innerHTML = Math.floor(player.right);
+  fieldWrong.innerHTML = Math.floor(player.wrong);
 }
 
 function updateLevel(){
@@ -1304,8 +1306,10 @@ function resetGame(){
 }
 
 function initUI(){
-  fieldDistance = document.getElementById("distValue");
+  // fieldDistance = document.getElementById("distValue");
   fieldGameOver = document.getElementById("gameoverInstructions");
+  fieldRight = document.getElementById("rightValue");
+  fieldWrong = document.getElementById("wrongValue");
   
 }
 
@@ -1408,8 +1412,9 @@ enemy = {
 if(player.text_len == 0){
   var sentence = story[player.text];
   generateText(sentence);
-  player.text_len = sentence.length;
+  player.text_len = sentence.length-1;
   console.log(sentence);
+  player.text += 1;
 }
 
 init()
