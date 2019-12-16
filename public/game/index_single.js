@@ -24,8 +24,19 @@ function check(param) {
      if(gameStatus !== 'play') return;
 
      var input = param == 32 || param == 160 ? '&NBSP;' : String.fromCharCode(param);
+     if(param == 188) {
+          input = ',';
+     }
+     if(param == 190) {
+          input = '.';
+     }
      var letter = $('.flag').first();
-     var up = letter.html().toUpperCase();
+     var up = letter.html();
+     if (up != ',') {
+          up = up.toUpperCase();
+     }
+     console.log(up + 'input' + input);
+     
      var audio = new sound("click.mp3");
      var audio2 = new sound("wrong.mp3");
      

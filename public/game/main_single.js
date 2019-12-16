@@ -160,7 +160,7 @@ function handleMouseDown(event){
   // if (gameStatus == "play") hero.jump();
   if (gameStatus == "play") {
     getBonus();
-    hero.jump();
+    // hero.jump();
   }
   else if (gameStatus == "readyToReplay"){
     replay();
